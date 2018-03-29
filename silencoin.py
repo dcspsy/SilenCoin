@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 import hashlib
 import json
 from textwrap import dedent
@@ -91,11 +93,10 @@ class Blockchain(object):
 
         guess = f'{last_proof}{proof}'.encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
-        return guess_hash[:3] == "520"
+        # return guess_hash[:3] == "zxy"
         # return guess_hash[:4] == "1314"
-        # return guess_hash[:6] == "ILOVEU"
         # return guess_hash[:7] == "5201314"
-        # return guess_hash[:3] == "zxy" & guess_hash[-3:] == "psy"
+        return (guess_hash[:1] == "160") & (guess_hash[-1:] == "168")
 
     def register_node(self, address):
         """
